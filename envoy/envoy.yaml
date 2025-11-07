@@ -38,4 +38,4 @@ static_resources:
                   address:
                     socket_address:
                       address: 127.0.0.1
-                      port_value: 8888
+                      port_value: 3000
