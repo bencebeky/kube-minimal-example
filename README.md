@@ -3,11 +3,14 @@
 ## usage
 
 ```bash
-# build and run proxy in one terminal
-docker build -t envoy-proxy envoy-proxy
-docker run -p 8080:8080 envoy-proxy
-
-# build and run backend in another terminal
+# build images
 docker build -t backend backend
-docker run -p 3000:3000 backend
+docker build -t envoy-proxy envoy-proxy
+
+# create network
+docker network create virtual_network
+
+# start containers in background
+docker run -d --network virtual_network --name backend_container -p 3000:3000 backend
+docker run -d --network virtual_network --name envoy_container -p 8080:8080 envoy-proxy
 ```
