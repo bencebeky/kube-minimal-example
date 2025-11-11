@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proxy-app
+  template:
+    metadata:
+      labels:
+        app: proxy-app
+    spec:
+      containers:
+        - name: envoy-container
+          image: envoy-proxy
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
