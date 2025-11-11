@@ -13,8 +13,8 @@ spec:
         app: proxy-app
     spec:
       containers:
-        - name: envoy-container
-          image: envoy-proxy
+        - name: proxy-container
+          image: proxy
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - containerPort: 8000
