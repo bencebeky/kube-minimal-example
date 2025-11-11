@@ -22,4 +22,32 @@ docker container stop envoy_container backend_container
 
 # delete stopped containers
 docker container rm envoy_container backend_container
+
+# delete images
+docker image rm backend envoy-proxy
+```
+
+## Deploy with Kubernetes
+
+```bash
+# start minikube
+minikube start
+
+# build docker images in minikube environment
+eval $(minikube docker-env)
+docker build -t backend backend
+docker build -t envoy-proxy envoy-proxy
+
+# create and start deployment
+kubectl create -f single-pod-deployment.yaml
+
+# monitor
+kubectl events
+minikube dashboard
+
+# stop and delete deployment
+kubectl delete deployment single-pod-deployment
+
+# delete images
+docker image rm backend envoy-proxy
 ```
