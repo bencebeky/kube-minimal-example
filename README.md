@@ -98,5 +98,4 @@ minikube stop
 
 # optional: clean up
 minikube delete
-
 ```
